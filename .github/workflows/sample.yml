@@ -1,0 +1,33 @@
+name: Setup Python and Node
+
+on:
+workflow_dispatch:  # manual trigger only
+
+jobs:
+setup:
+runs-on: ubuntu-latest
+
+```
+steps:
+  - name: Checkout repo
+    uses: actions/checkout@v4
+
+  # Install Node.js
+  - name: Setup Node.js
+    uses: actions/setup-node@v4
+    with:
+      node-version: '20'
+
+  # Install Python
+  - name: Setup Python
+    uses: actions/setup-python@v5
+    with:
+      python-version: '3.11'
+
+  # Verify installations
+  - name: Check versions
+    run: |
+      node -v
+      npm -v
+      python --version
+```
